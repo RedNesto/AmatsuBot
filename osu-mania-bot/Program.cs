@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Amatsu
 {
-    class Program
+    static class Program
     {
         public static IrcClient irc = new IrcClient();
         public static List<string> users = new List<string>();
@@ -235,7 +235,6 @@ namespace Amatsu
 
         public static void OnDisconnected(object sender, EventArgs e)
         {
-            Console.WriteLine("Disconnected.");
             Log.Write("Disconnected.");
             Thread.Sleep(5000);
             Connect(username, password);
@@ -252,8 +251,7 @@ namespace Amatsu
             }
             catch (ConnectionException ex)
             {
-                Console.WriteLine("Couldn't connect, reason: " + ex);
-                Log.Write("Error: " + ex);
+                Log.Write("Couldn't connect, reason: " + ex);
                 Thread.Sleep(10000);
                 Connect(username, pass, port, server);
             }
@@ -277,7 +275,7 @@ namespace Amatsu
             irc.OnDisconnected += new EventHandler(OnDisconnected);
             users.Add("-_Alexmal_-");
             last_map.Add("425725");
-            Connect(username, password);
+            Connect(username, password, 6667, "localhost");
         }
 
         public static void ReadCommands()

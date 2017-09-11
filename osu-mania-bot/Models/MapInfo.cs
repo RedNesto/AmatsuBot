@@ -26,7 +26,7 @@ namespace Amatsu
                 string result = response.Content;
                 if (result.Length > 2)
                 {
-                    Beatmaps btm = JsonConvert.DeserializeObject<Beatmaps>(result.Substring(1, result.Length - 2));
+                    Beatmap btm = JsonConvert.DeserializeObject<Beatmap>(result.Substring(1, result.Length - 2));
                     od = Convert.ToDouble(btm.diff_overall.Replace('.', ','));
                     obj = Convert.ToDouble(Osu.Combo(map_id));
                     stars = Convert.ToDouble(btm.difficultyrating.Replace('.', ','));

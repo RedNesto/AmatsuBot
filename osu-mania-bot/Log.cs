@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Text;
 
 namespace Amatsu
 {
@@ -16,18 +15,13 @@ namespace Amatsu
 
         public static void Write(string thingToWrite)
         {
-            var logText = new StringBuilder();
-            logText.Append($"{DateTime.Now}: {thingToWrite}\r\n");
-            File.AppendAllText(_date + "_logfile.log", logText.ToString());
-            logText.Clear();
+            Console.WriteLine(thingToWrite);
+            File.AppendAllText(_date + "_logfile.log", $"{DateTime.Now}: {thingToWrite}\r\n");
         }
 
         public static void Report(string thingToWrite)
         {
-            var logText = new StringBuilder();
-            logText.Append($"{DateTime.Now}: {thingToWrite}\r\n");
-            File.AppendAllText(_date + "_reportfile.log", logText.ToString());
-            logText.Clear();
+            File.AppendAllText(_date + "_reportfile.log", $"{DateTime.Now}: {thingToWrite}\r\n");
         }
     }
 }
